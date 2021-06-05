@@ -12,7 +12,7 @@ int main(void)
     {
         char brick[9] = "#";
         strncat(brick, "########", h); //make step
-        printf("%*s  %-*s\n", height, brick, height, brick);
+        printf("%*s  %-*s\n", height, brick, height-1, brick);
     }
 
 }
