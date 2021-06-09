@@ -6,25 +6,26 @@ string validateCard(long number);
 
 int main(void)
 {
-    printf("%s",validateCard(getCardNumber()));
+    printf("%s", validateCard(getCardNumber()));
 }
 
 long getCardNumber(void)
+// get positive number less then 17 digits
 {
-   long num = 0;
-   long limit = 10000000000000000;
-   while (1)
-   {
-      num = get_long("Number: ");
-      if (num > 0 && num < limit)
-      {
-          return num;
-      }
-   }
+    long num = 0, limit = 10000000000000000;
 
+    while (1)
+    {
+        num = get_long("Number: ");
+        if (num > 0 && num < limit)
+        {
+            return num;
+        }
+    }
 }
 
 string validateCard(long number)
+// return result evaluation of given number
 {
     long card = number;
     long valids = 0;
@@ -32,12 +33,20 @@ string validateCard(long number)
     long index = 0;
     long temp;
     if (card < 1000000000000)
-        return "INVALID\n";
+    {
+        return "INVALID\n";     // Have not sense continue if number less then 13 digits
+    }
+
     while (card > 0)
     {
+        // Save first 2 digits of cards number
         if (card >= 10 && card < 100)
+        {
+
             index = card;
 
+        }
+        // Calculate Luhn’s algorithm
         if (counter < 1)
         {
             valids += card % 10;
@@ -64,13 +73,21 @@ string validateCard(long number)
             }
         }
     }
-    printf("%ld %ld\n", index, valids);
+    // return AMEX, VISA, MASTRCARD or INVALID according to rules
     if ((index == 32 || index == 37) && valids % 10 == 0)
+    {
         return "AMEX\n";
+    }
     else if (index / 10 == 4 && valids % 10 == 0)
+    {
         return "VISA\n";
+    }
     else if ((index == 22 || (index >= 51 && index <= 55)) && valids % 10 == 0)
+    {
         return "MASTERCARD\n";
+    }
     else
+    {
         return "INVALID\n";
+    }
 }
