@@ -31,6 +31,8 @@ string validateCard(long number)
     int counter = 0;
     long index = 0;
     long temp;
+    if (card < 1000000000000)
+        return "INVALID\n";
     while (card > 0)
     {
         if (card >= 10 && card < 100)
@@ -62,13 +64,13 @@ string validateCard(long number)
             }
         }
     }
-    //printf("%ld %ld\n", index, valids);
+    printf("%ld %ld\n", index, valids);
     if ((index == 32 || index == 37) && valids % 10 == 0)
-        return "AMERICAN EXPRESS\n";
+        return "AMEX\n";
     else if (index / 10 == 4 && valids % 10 == 0)
         return "VISA\n";
     else if ((index == 22 || (index >= 51 && index <= 55)) && valids % 10 == 0)
-        return "MASTER CARD\n";
+        return "MASTERCARD\n";
     else
         return "INVALID\n";
 }
