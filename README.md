@@ -1,2 +1,2 @@
 # nikokortizzion
-Week 1 3 tasks. 
+CS50 begin on 09.06.2021 
