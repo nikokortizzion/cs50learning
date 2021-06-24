@@ -90,6 +90,7 @@ float c_h_index(string text)
  * L is the average number of letters per 100 words in the text
  * S is the average number of sentences per 100 words in the text.
 */
+
 {
     float letters = (float)count_letters(text);
     float words = (float)count_words(text);
